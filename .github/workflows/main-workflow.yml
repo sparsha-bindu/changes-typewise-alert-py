@@ -34,7 +34,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Run and collect coverage
       run: |
-        coverage run example.test.py
+        coverage run --branch typewise_alert.test.py
         coverage html
         coverage report
     - name: Upload coverage 
