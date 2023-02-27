@@ -35,3 +35,10 @@ jobs:
           name: coverage
           path: ./htmlcov
           retention-days: 21
+          
+      - uses: devmasx/coverage-check-action@v1.2.0
+        with:
+          type: simplecov
+          result_path: coverage/.last_run.json
+          min_coverage: 90
+          token: ${{ github.token }}
