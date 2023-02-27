@@ -36,12 +36,12 @@ jobs:
           path: ./htmlcov
           retention-days: 21
           
-          
-      - name: Monitor coverage
-        uses: slavcodev/coverage-monitor-action@v1
+      - name: Coverage check
+        uses: devmasx/coverage-check-action@v1.2.0
         with:
+          type: lcov
+          result_path: coverage/example.lcov
+          min_coverage: 90
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          coverage_path: ./logs/clover.xml
-          threshold_alert: 10
-          threshold_warning: 50
-          threshold_metric: "lines"
+
+        
