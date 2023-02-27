@@ -42,6 +42,5 @@ jobs:
           type: lcov
           result_path: coverage/example.lcov
           min_coverage: 90
-          token: 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
-
+          token: $ {{ github.token }}
         
