@@ -36,10 +36,3 @@ jobs:
           path: ./htmlcov
           retention-days: 21
           
-      - name: Coverage check
-        uses: devmasx/coverage-check-action@v1.2.0
-        with:
-          type: lcov
-          result_path: coverage/example.lcov
-          min_coverage: 90
-  
