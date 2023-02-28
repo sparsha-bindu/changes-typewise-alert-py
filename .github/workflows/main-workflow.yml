@@ -6,7 +6,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    fail-fast: true
 
     steps:
       - uses: actions/checkout@v2
