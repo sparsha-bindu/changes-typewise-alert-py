@@ -28,14 +28,6 @@ jobs:
         run: |
           coverage run --branch typewise_alert.test.py
           coverage html
-          coverage report
-          COVERAGE=$(coverage report | awk 'END{print $NF}')
-          if python -c "import math; print(math.floor($COVERAGE) < 90)"; then
-              echo "Coverage is less than 90%. Failing the build..."
-              exit 1
-          else
-              echo "Coverage is greater than or equal to 90%."
-          fi
 
       - name: Upload coverage
         uses: actions/upload-artifact@v2
@@ -43,3 +35,21 @@ jobs:
           name: coverage
           path: ./htmlcov
           retention-days: 21
+
+  coverage-check:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download coverage
+        uses: actions/download-artifact@v2
+        with:
+          name: coverage
+      - name: Check coverage
+        run: |
+          COVERAGE=$(coverage report | awk 'END{print $NF}')
+          if (( $(echo "$COVERAGE < 90" | bc -l) )); then
+            echo "Coverage is less than 90%. Failing the build..."
+            exit 1
+          else
+            echo "Coverage is greater than or equal to 90%."
+          fi
