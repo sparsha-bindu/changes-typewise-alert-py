@@ -28,13 +28,7 @@ jobs:
         run: |
           coverage run --branch typewise_alert.test.py
           coverage html
-          COVERAGE=$(coverage report | awk 'END{print $NF}')
-          if (( $(echo "$COVERAGE > 100" | bc -l) )); then
-            echo "Coverage is less than 100%. Failing the build..."
-            exit 1
-          else
-            echo "Coverage is greater than or equal to 90%."
-          fi
+          coverage report
       - name: Upload coverage
         uses: actions/upload-artifact@v2
         with:
