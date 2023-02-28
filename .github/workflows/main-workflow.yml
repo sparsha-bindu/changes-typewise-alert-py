@@ -30,7 +30,7 @@ jobs:
           coverage html
           coverage report
           COVERAGE=$(coverage report | grep TOTAL | awk '{print $NF}')
-          if [ $(echo "$COVERAGE < 100" | bc -l) -eq 1 ]; then
+          if (( $(echo "$COVERAGE < 90" | bc -l) )); then
             echo "Coverage is less than 90%. Failing the build..."
             exit 1
           fi
