@@ -29,13 +29,11 @@ jobs:
           coverage run --branch typewise_alert.test.py
           coverage html
           coverage report
-          tests:  # declare a new status context "tests"
           target: 100%  # we always want 100% coverage here
-
       - name: Upload coverage
         uses: actions/upload-artifact@v2
         with:
           name: coverage
           path: ./htmlcov
           retention-days: 21
-          
+                     
