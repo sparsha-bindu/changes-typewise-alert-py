@@ -1,34 +1,17 @@
+def find_max(numbers):
+    """
+    Finds the maximum number in a list of integers.
 
-def infer_breach(value, lowerLimit, upperLimit):
-  if value < lowerLimit:
-    return 'TOO_LOW'
-  return 'NORMAL'
+    Args:
+        numbers: a list of integers
 
-
-def classify_temperature_breach(coolingType, temperatureInC):
-  lowerLimit = 0
-  upperLimit = 0
-  if coolingType == 'PASSIVE_COOLING':
-    lowerLimit = 0
-    upperLimit = 35
-  return infer_breach(temperatureInC, lowerLimit, upperLimit)
-
-
-def check_and_alert(alertTarget, batteryChar, temperatureInC):
-  breachType =\
-    classify_temperature_breach(batteryChar['coolingType'], temperatureInC)
-  if alertTarget == 'TO_CONTROLLER':
-    send_to_controller(breachType)
-
-
-
-def send_to_controller(breachType):
-  header = 0xfeed
-  print(f'{header}, {breachType}')
-
-
-def send_to_email(breachType):
-  recepient = "a.b@c.com"
-  if breachType == 'TOO_LOW':
-    print(f'To: {recepient}')
-    print('Hi, the temperature is too low')
+    Returns:
+        The maximum number in the list.
+    """
+    if not numbers:
+        return None
+    max_num = numbers[0]
+    for num in numbers:
+        if num > max_num:
+            max_num = num
+    return max_num
