@@ -1,5 +1,5 @@
 import unittest
-from production_code import find_max
+from typewise_alert import find_max
 
 class TestFindMax(unittest.TestCase):
 
