@@ -18,5 +18,5 @@ class TestFindMax(unittest.TestCase):
     def test_negative_numbers(self):
         self.assertEqual(find_max([-1, -2, -3]), -1)
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     unittest.main()
