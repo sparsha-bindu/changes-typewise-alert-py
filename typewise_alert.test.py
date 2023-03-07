@@ -19,4 +19,4 @@ class TestFindMax(unittest.TestCase):
         self.assertEqual(find_max([-1, -2, -3]), -1)
 
 if _name_ == '_main_':
-    unittest.main()
+    unittest.main()
